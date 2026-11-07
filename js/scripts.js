@@ -8,12 +8,18 @@ function mudarJogador(isJogador1) {
   return true;
 }
 
+function isBlocoMarcado(bloco) {
+  if (!bloco.textContent) return false;
+  return true;
+}
+
 function addListenersGrade(blocosGrade, isJogador1) {
   for (let i = 0; i < blocosGrade.length; i++) {
     blocosGrade[i].addEventListener("click", function () {
-      blocosGrade[i].textContent += escolherBolaOuX(isJogador1);
+      if (!isBlocoMarcado(blocosGrade[i])) {
+        blocosGrade[i].textContent += escolherBolaOuX(isJogador1);
+      }
       isJogador1 = mudarJogador(isJogador1);
-      console.log(isJogador1);
     });
   }
 }
