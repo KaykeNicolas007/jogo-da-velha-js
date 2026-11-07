@@ -68,12 +68,14 @@ function addListenersGrade(blocosGrade, isJogador1) {
         marcarBolaOuX(blocoAtual, isJogador1);
 
         if (checarVitoria(blocosGrade) !== "-") {
-          alert("Alguém venceu! Reinicie para jogar novamente!");
+          alert(`"${checarVitoria(blocosGrade).toLocaleUpperCase()}" venceu!`);
+          location.reload();
           return;
         }
 
         if (checarVelha(blocosGrade)) {
-          alert("Deu velha! Reinicie para jogar novamente!");
+          alert("Deu velha!");
+          location.reload();
           return;
         }
 
