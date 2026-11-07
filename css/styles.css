@@ -32,10 +32,6 @@ h1 {
   margin: auto;
 }
 
-.hide {
-  display: none;
-}
-
 .blocks {
   height: 14rem;
   border: solid 2px;

@@ -1,38 +1,23 @@
-function escolherBolaOuX(x, isJogador1) {
-  if (isJogador1) return x;
-  return "o";
+function marcarBolaOuX(bloco, isJogador1) {
+  const simbolo = isJogador1 ? "x" : "o";
+  bloco.textContent = simbolo;
+  bloco.classList.add(simbolo);
 }
 
-function mudarJogador(isJogador1) {
-  if (isJogador1) return false;
-  return true;
-}
-
-function isBlocoMarcado(bloco) {
-  if (!bloco.textContent) return false;
-  return true;
-}
-
-function addListenersGrade(blocosGrade, isJogador1, x) {
+function addListenersGrade(blocosGrade, isJogador1) {
   for (let i = 0; i < blocosGrade.length; i++) {
-    blocosGrade[i].addEventListener("click", function () {
-      if (!isBlocoMarcado(blocosGrade[i])) {
-        blocosGrade[i].textContent += escolherBolaOuX(x, isJogador1);
+    const blocoAtual = blocosGrade[i];
 
-        if (isJogador1) {
-          blocosGrade[i].classList.add("x");
-        } else {
-          blocosGrade[i].classList.add("o");
-        }
+    blocoAtual.addEventListener("click", function () {
+      if (!blocoAtual.textContent) {
+        marcarBolaOuX(blocoAtual, isJogador1);
       }
-      isJogador1 = mudarJogador(isJogador1);
+      isJogador1 = !isJogador1;
     });
   }
 }
 
 const blocosGrade = document.querySelectorAll(".blocks");
-const x = document.querySelector(".x");
-const o = document.querySelector(".o");
 let isJogador1 = true;
 
-addListenersGrade(blocosGrade, isJogador1, x.innerHTML);
+addListenersGrade(blocosGrade, isJogador1);
