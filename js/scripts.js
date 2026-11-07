@@ -4,6 +4,44 @@ function marcarBolaOuX(bloco, isJogador1) {
   bloco.classList.add(simbolo);
 }
 
+function checarVitoria(grade) {
+  const combinacoesVencedoras = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+
+  for (const combinacao of combinacoesVencedoras) {
+    const [a, b, c] = combinacao;
+    console.log(combinacao);
+
+    const blocoA = grade[a];
+    const blocoB = grade[b];
+    const blocoC = grade[c];
+
+    if (
+      blocoA.classList.contains("x") &&
+      blocoB.classList.contains("x") &&
+      blocoC.classList.contains("x")
+    ) {
+      console.log("X vence");
+    }
+
+    if (
+      blocoA.classList.contains("o") &&
+      blocoB.classList.contains("o") &&
+      blocoC.classList.contains("o")
+    ) {
+      console.log("O vence");
+    }
+  }
+}
+
 function addListenersGrade(blocosGrade, isJogador1) {
   for (let i = 0; i < blocosGrade.length; i++) {
     const blocoAtual = blocosGrade[i];
@@ -13,6 +51,7 @@ function addListenersGrade(blocosGrade, isJogador1) {
         marcarBolaOuX(blocoAtual, isJogador1);
       }
       isJogador1 = !isJogador1;
+      checarVitoria(blocosGrade);
     });
   }
 }
