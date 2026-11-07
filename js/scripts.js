@@ -1,11 +1,24 @@
-function addListenersGrade(blocosGrade) {
+function escolherBolaOuX(isJogador1) {
+  if (isJogador1) return "x";
+  return "o";
+}
+
+function mudarJogador(isJogador1) {
+  if (isJogador1) return false;
+  return true;
+}
+
+function addListenersGrade(blocosGrade, isJogador1) {
   for (let i = 0; i < blocosGrade.length; i++) {
     blocosGrade[i].addEventListener("click", function () {
-      console.log((blocosGrade[i].textContent += "X"));
+      blocosGrade[i].textContent += escolherBolaOuX(isJogador1);
+      isJogador1 = mudarJogador(isJogador1);
+      console.log(isJogador1);
     });
   }
 }
 
 const blocosGrade = document.querySelectorAll(".blocks");
+let isJogador1 = true;
 
-addListenersGrade(blocosGrade);
+addListenersGrade(blocosGrade, isJogador1);
