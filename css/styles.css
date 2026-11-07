@@ -8,12 +8,32 @@ h1 {
   margin: 2rem 0;
 }
 
+.x,
+.o {
+  font-size: 12rem;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+.x {
+  color: red;
+}
+
+.o {
+  color: blueviolet;
+}
+
 #container {
   width: 42rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   position: relative;
   margin: auto;
+}
+
+.hide {
+  display: none;
 }
 
 .blocks {
