@@ -29,7 +29,8 @@ function checarVitoria(grade) {
       blocoB.classList.contains("x") &&
       blocoC.classList.contains("x")
     ) {
-      console.log("X vence");
+      console.log("X vence!");
+      return "x";
     }
 
     if (
@@ -37,9 +38,25 @@ function checarVitoria(grade) {
       blocoB.classList.contains("o") &&
       blocoC.classList.contains("o")
     ) {
-      console.log("O vence");
+      console.log("O vence!");
+      return "o";
     }
   }
+  return "-";
+}
+
+function checarVelha(grade) {
+  for (let i = 0; i < grade.length; i++) {
+    if (
+      !grade[i].classList.contains("x") &&
+      !grade[i].classList.contains("o")
+    ) {
+      return false;
+    }
+  }
+  if (checarVitoria(grade) !== "-") return false;
+  console.log("Deu velha!");
+  return true;
 }
 
 function addListenersGrade(blocosGrade, isJogador1) {
@@ -52,6 +69,7 @@ function addListenersGrade(blocosGrade, isJogador1) {
       }
       isJogador1 = !isJogador1;
       checarVitoria(blocosGrade);
+      checarVelha(blocosGrade);
     });
   }
 }
