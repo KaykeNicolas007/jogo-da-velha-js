@@ -34,7 +34,7 @@ h1 {
 
 .blocks {
   height: 14rem;
-  border: solid 2px;
+  border: solid 2px black;
   box-sizing: border-box;
 }
 
