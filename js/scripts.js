@@ -66,19 +66,19 @@ function addListenersGrade(blocosGrade, isJogador1) {
     blocoAtual.addEventListener("click", function () {
       if (!blocoAtual.textContent) {
         marcarBolaOuX(blocoAtual, isJogador1);
-      }
 
-      if (checarVitoria(blocosGrade) !== "-") {
-        alert("Alguém venceu! Reinicie para jogar novamente!");
-        return;
-      }
+        if (checarVitoria(blocosGrade) !== "-") {
+          alert("Alguém venceu! Reinicie para jogar novamente!");
+          return;
+        }
 
-      if (checarVelha(blocosGrade)) {
-        alert("Deu velha! Reinicie para jogar novamente!");
-        return;
-      }
+        if (checarVelha(blocosGrade)) {
+          alert("Deu velha! Reinicie para jogar novamente!");
+          return;
+        }
 
-      isJogador1 = !isJogador1;
+        isJogador1 = !isJogador1;
+      }
     });
   }
 }
